@@ -12,7 +12,6 @@ void *contar(void * start){
 	for (long i = 0; i < (long) ELEMENTS_PER_THREADS; ++i) {
 		start++;
 	}
-	printf("%ld \n", count);
 	pthread_exit(0);
 }
 
@@ -25,7 +24,6 @@ int main(int argc, char *argv[])
 	for(long i = 0; i < NUM_THREADS; i++){
 		long start = i * ELEMENTS_PER_THREADS;
 		long id = pthread_create(&t[i], NULL, contar, (void*)start);
-		printf("Criando thread número: %ld \n", i);
 	}
 	for(int i = 0; i < NUM_THREADS; i++){
 		pthread_join(t[i], NULL);
